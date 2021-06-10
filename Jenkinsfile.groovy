@@ -14,11 +14,11 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                git 'https://github.com/amrit14rajsingh/restapicomponentone.git'
 
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
+                checkout()
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
@@ -43,15 +43,15 @@ def checkout() {
               //branches         : [[name: "origin/${env.branchName}"]],
               branches         : [[name: "origin/master"]],
               extensions       : [],
-              userRemoteConfigs: [[credentialsId: '29e88c97-65a1-471b-8fbf-2f6301891ea7',
+              userRemoteConfigs: [[credentialsId: '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',
                                    url          : 'git@github.dev.global.tesco.org:stock/stock-outbound-events.git'
                                   ]]
     ])
 
-    echo "Stage: POM_VERSION"
-    def pom = readMavenPom()
-    env.VERSION = pom.version[0..4]
-    echo "Project version from POM : $version"
+   // echo "Stage: POM_VERSION"
+  //  def pom = readMavenPom()
+  //  env.VERSION = pom.version[0..4]
+   // echo "Project version from POM : $version"
 }
 
 def build() {
