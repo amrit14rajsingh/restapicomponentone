@@ -38,7 +38,8 @@ pipeline {
 }
 
 def checkout() {
-    echo "Branch $env.branchName is checked out"
+   // echo "Branch $env.branchName is checked out"
+    echo "Branch master is checked out"
     checkout([$class           : 'GitSCM',
               //branches         : [[name: "origin/${env.branchName}"]],
               branches         : [[name: "origin/master"]],
