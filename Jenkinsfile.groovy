@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/amrit14rajsingh/restapicomponentone.git'
+                git branch 'master' url: 'https://github.com/amrit14rajsingh/restapicomponentone.git'
 
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -45,7 +45,7 @@ def checkout() {
               branches         : [[name: "origin/master"]],
               extensions       : [],
               userRemoteConfigs: [[credentialsId: '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',
-                                   url          : 'git@github.dev.global.tesco.org:stock/stock-outbound-events.git'
+                                   url          : 'git@github.com:amrit14rajsingh/restapicomponentone.git'
                                   ]]
     ])
 
