@@ -18,7 +18,13 @@ public class Restapicomponentone_vehiclecontroller {
 
     @PostMapping(value = "/vehicle", consumes = "application/json", produces = "application/json")
     @ApiOperation(value = "Create Vehicle in database")
-    public ResponseEntity<Vehicle> addVehicleDetails(@RequestBody(required = true) Vehicle vehicle,
+    public ResponseEntity<Vehicle> addVehicleDetails(@ApiParam(name = "vehicle", value = "vehicle body {\n" +
+            "        \"vin\": \"1234567\",\n" +
+            "        \"year\": 2020,\n" +
+            "        \"make\": \"Toyota\",\n" +
+            "        \"model\": \"Corolla\"\n" +
+            "        }", required = true)
+                                                     @RequestBody(required = true) Vehicle vehicle,
                                                      @ApiParam(name = "TraceId",value = "Unique string as per REST STD TraceId standards, for tracking requests "
                                                              + "across services.\n \n e.g. 6dc33ac0-6c82-44va-b0a1-e05e7659d70b")
                                                      @RequestHeader(name = "TraceId", required = false)
@@ -33,7 +39,7 @@ public class Restapicomponentone_vehiclecontroller {
         }
     }
 
-    @GetMapping(value = "/vehicle/{vin}", consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/vehicle/{vin}", produces = "application/json")
     @ApiOperation(value = "Get Vehicle from database")
     public ResponseEntity<Vehicle> getVehicleDetails( @ApiParam(name = "vin", value = "vin of vehicle", required = true)
                                                       @PathVariable("vin")
