@@ -2,3 +2,13 @@ server:
   port: 9091
   application:
     name: restapicomponentone
+
+#specific to spring-data-couchbase -- check in maven
+spring:
+  couchbase:
+    connection-string: localhost
+    username: StockService
+    password: St0ckS3rv1c3
+  data:
+    couchbase:
+      bucket-name: StockService
