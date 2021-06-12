@@ -2,6 +2,14 @@ server:
   port: 9091
   application:
     name: restapicomponentone
+# To allow all the actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: "always"
 
 #specific to spring-data-couchbase -- check in maven
 spring:
